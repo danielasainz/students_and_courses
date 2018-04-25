@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+    <head th:replace="index :: first"></head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Students and Courses Registration</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/add">Add a Course</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">List Courses</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1>This is my list course html page</h1>
+
+<div th:each="course : ${courseslist}">
+ <p th:inline="text"> Course Name: [[${course.courseName}]]</p>
+  <p th:inline="text"> Course Number: [[${course.courseNumber}]]</p>
+    <p th:text="${course.inSession}? 'This course is in session' : 'This course is not in session.'"></p>
+    <a th:text="${course.inSession}? 'Change course to not in session' : 'Change course to in session'"
+       th:href="@{/changestatus/{id}(id=${course.id})}"></a>
+    <span><a th:href="@{/update/{id}(id=${course.id})}">Update</a></span>
+</div>
+
+</body>
+</html>
