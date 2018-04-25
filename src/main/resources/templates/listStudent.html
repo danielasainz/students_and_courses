@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
     <head th:replace="index :: first"></head>
-<body>
 
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">Students and Courses Registration</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -27,20 +28,17 @@
         </ul>
     </div>
 </nav>
+<h1>This is my list Student page</h1>
+<div th:each="student : ${studentslist}">
+  <p th:inline="text">Student Number: [[${student.studentNumber}]]</p>
+    <p th:inline="text">Student First Name: [[${student.firstName}]]</p>
+    <p th:inline="text">Student Last Name: [[${student.lastName}]]</p>
+    <p th:inline="text">Student Phone Number: [[${student.phoneNumber}]]</p>
+    <p th:inline="text">Student Address: [[${student.address}]]</p>
+    <span><a th:href="@{/updatestudent/{id}(id=${student.id})}">Update</a></span>
 
-<h1> This is my add Course html page </h1>
+</div>
 
-<form action="#" th:action="@{/save}" th:object="${aCourse}" method="post">
-
-    <input type="hidden" th:field="*{id}"/><br/>
-
-    Course Number: <input type="text" th:field="*{courseNumber}"/><br/>
-    Course Name: <input type="text" th:field="*{courseName}"/><br/>
-    <input type="submit" value="Submit"/>
-
-
-
-</form>
 
 </body>
 </html>

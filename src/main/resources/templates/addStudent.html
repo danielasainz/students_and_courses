@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
     <head th:replace="index :: first"></head>
-<body>
 
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">Students and Courses Registration</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -27,20 +27,19 @@
         </ul>
     </div>
 </nav>
+    <h1>This is my add Student page</h1>
 
-<h1> This is my add Course html page </h1>
+<form action="#" th:action="@{/savestudent}" th:object="${aStudent}" method="post">
 
-<form action="#" th:action="@{/save}" th:object="${aCourse}" method="post">
+<input type="hidden" th:field="*{id}"/><br/>
 
-    <input type="hidden" th:field="*{id}"/><br/>
-
-    Course Number: <input type="text" th:field="*{courseNumber}"/><br/>
-    Course Name: <input type="text" th:field="*{courseName}"/><br/>
-    <input type="submit" value="Submit"/>
-
-
+Student Number: <input type="text" th:field="*{studentNumber}"/><br/>
+Student First Name: <input type="text" th:field="*{firstName}"/><br/>
+Student Last Name: <input type="text" th:field="*{lastName}"/><br/>
+Student Phone Number: <input type="text" th:field="*{phoneNumber}"/><br/>
+Student Address: <input type="text" th:field="*{address}"/><br/>
+<input type="submit" value="Submit"/>
 
 </form>
-
 </body>
 </html>
