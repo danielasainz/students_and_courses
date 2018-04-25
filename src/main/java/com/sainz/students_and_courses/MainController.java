@@ -23,6 +23,7 @@ public class MainController {
     @GetMapping("/add")
     public String addCourse(Model model) {
         model.addAttribute("aCourse", new Course());
+        model.addAttribute("studentslist", studentRepo.findAll());
         return "addCourse";
     }
 
@@ -79,4 +80,11 @@ public class MainController {
         return "addCourse";
     }
 
+    @RequestMapping("/addcoursewithform")
+    public String addCourseWithDropDown(Model model)
+    {
+        model.addAttribute("aCourse", new Course());
+        model.addAttribute("studentslist", studentRepo.findAll());
+        return "addcourseform";
+    }
 }

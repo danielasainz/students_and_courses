@@ -24,6 +24,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/liststudent">List Students</a>
             </li>
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/addcoursewithform">Select Your Courses</a>
+            </li>-->
         </ul>
     </div>
 </nav>
@@ -36,6 +39,14 @@
 
     Course Number: <input type="text" th:field="*{courseNumber}"/><br/>
     Course Name: <input type="text" th:field="*{courseName}"/><br/>
+    Student:<select th:field="*{oneStudent}">
+    <option th:each="eachStudent:${studentslist}"
+            th:value="${eachStudent.id}"
+            th:text="${eachStudent.firstName}"></option>
+</select>
+
+
+<!--    <input type="text" th:field="*{oneStudent}"/><br/>-->
     <input type="submit" value="Submit"/>
 
 

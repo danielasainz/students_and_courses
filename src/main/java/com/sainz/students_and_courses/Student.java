@@ -1,9 +1,8 @@
 package com.sainz.students_and_courses;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -19,8 +18,17 @@ public class Student {
     private String phoneNumber;
     private String address;
 
+
+    //create a list of courses as one of the variables - will be a set - course is taken by only one student at this point
+    //one student takes many courses - variable there defining there is a list of courses (SEE BELOW)
+    @OneToMany(mappedBy="oneStudent")
+    Set<Course> myCourses;
+
     public Student(){
+        //instantiate courses here - OK, SEE BELOW
+        myCourses = new HashSet<>();
     }
+
 
     public long getId() {
         return id;
@@ -68,5 +76,12 @@ public class Student {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public Set<Course> getMyCourses() {
+        return myCourses;
+    }
+
+    public void setMyCourses(Set<Course> myCourses) {
+        this.myCourses = myCourses;
     }
 }

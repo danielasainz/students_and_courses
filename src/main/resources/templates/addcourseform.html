@@ -1,6 +1,8 @@
+//This is not being accessed - what now?
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
-    <head th:replace="index :: first"></head>
+<head th:replace="index :: first"></head>
 
 <body>
 
@@ -27,21 +29,21 @@
             </li>
             <!--<li class="nav-item">
                 <a class="nav-link" href="/addcoursewithform">Select Your Courses</a>
-            </li> -->
+            </li>-->
         </ul>
     </div>
 </nav>
 
-<h1>This is my list course html page</h1>
+<form action="/save" th:object="${aCourse}" method="post">
+    <input type="text" th:field="*{courseName}">
+    <select th:field="*{oneStudent}">
+    <option th:each="eachStudent:${studentslist}"
+            th:value="${eachStudent.id}"
+            th:text="${eachStudent.firstName}"></option>
+    </select>
+    <button type="submit">Save</button>
 
-<div th:each="course : ${courseslist}">
- <p th:inline="text"> Course Name: [[${course.courseName}]]</p>
-  <p th:inline="text"> Course Number: [[${course.courseNumber}]]</p>
-    <p th:text="${course.inSession}? 'This course is in session' : 'This course is not in session.'"></p>
-    <a th:text="${course.inSession}? 'Change course to not in session' : 'Change course to in session'"
-       th:href="@{/changestatus/{id}(id=${course.id})}"></a>
-    <span><a th:href="@{/update/{id}(id=${course.id})}">Update</a></span>
-</div>
+</form>
 
 </body>
 </html>

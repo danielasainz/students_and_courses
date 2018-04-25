@@ -1,9 +1,6 @@
 package com.sainz.students_and_courses;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Course {
@@ -17,9 +14,14 @@ public class Course {
     private String courseNumber;
     private boolean inSession;
 
-    public Course() {
-        inSession=true;
+    //Many to One relationship here because multiple courses can be assigned to one student - only that student
+    //Have to have Many to One relationship on top of student object
 
+    @ManyToOne()
+        Student oneStudent;
+
+    public Course() {
+        inSession = true;
     }
 
     public long getId() {
@@ -53,4 +55,12 @@ public class Course {
     public void setInSession(boolean inSession) {
         this.inSession = inSession;
     }
+    public Student getOneStudent() {
+        return oneStudent;
+    }
+
+    public void setOneStudent(Student oneStudent) {
+        this.oneStudent = oneStudent;
+    }
+
 }
