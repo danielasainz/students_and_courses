@@ -77,6 +77,7 @@ public class MainController {
     @RequestMapping("/update/{id}")
     public String updateCourse(@PathVariable("id") long id, Model model){
         model.addAttribute("aCourse", courseRepo.findById(id).get());
+        model.addAttribute("studentslist", studentRepo.findAll());
         return "addCourse";
     }
 

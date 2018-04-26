@@ -38,6 +38,12 @@
     <p th:inline="text">Student Last Name: [[${student.lastName}]]</p>
     <p th:inline="text">Student Phone Number: [[${student.phoneNumber}]]</p>
     <p th:inline="text">Student Address: [[${student.address}]]</p>
+    <!--created these last two lines below to display courses in the liststudent.htmlpage
+    //myCourses comes from Set name in your Student object class-->
+    <div th:each="eachcourse: ${student.myCourses}">
+        <p th:inline="text">Course Name: [[${eachcourse.courseName}]]</p>
+    </div>
+
     <span><a th:href="@{/updatestudent/{id}(id=${student.id})}">Update</a></span>
 
     <!--create a view to see which students associated with which course -->

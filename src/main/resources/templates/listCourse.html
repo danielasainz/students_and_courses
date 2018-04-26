@@ -40,6 +40,10 @@
     <p th:text="${course.inSession}? 'This course is in session' : 'This course is not in session.'"></p>
     <a th:text="${course.inSession}? 'Change course to not in session' : 'Change course to in session'"
        th:href="@{/changestatus/{id}(id=${course.id})}"></a>
+        <div th:each="eachstudent: ${course.oneStudent}">
+            <p th:inline="text"> Student name: [[${eachstudent.firstName}]] [[${eachstudent.lastName}]]</p>
+
+        </div>
     <span><a th:href="@{/update/{id}(id=${course.id})}">Update</a></span>
 </div>
 
