@@ -40,8 +40,27 @@
     <p th:inline="text">Student Address: [[${student.address}]]</p>
     <span><a th:href="@{/updatestudent/{id}(id=${student.id})}">Update</a></span>
 
+    <!--create a view to see which students associated with which course -->
+    <!-- list all the courses a student is taking -->
+    <!-- you are on the right page... now create a list within a list -->
+
+
+    <!--
+   <div th:each="eachDirector:${directorlist}">
+        <!--List the director's full name-->
+        <!--
+        <p th:text="${eachDirector.fullName}"></p>
+        <!--List all the movies the director has directed-->
+       <!-- <div th:each="eachMovie: ${eachDirector.myMovies}">
+            <p th:text="${eachMovie.title}"></p>
+            <p th:text="${eachMovie.year}"></p>
+            <p th:text="${eachMovie.description}"></p>
+            <span><a th:href="@{/update/{id}(id=${eachDirector.id})}">Edit</a></span>
+        </div>
+    </div>
+</body>
+</html> -->
+    </div>
 </div>
-
-
 </body>
 </html>
